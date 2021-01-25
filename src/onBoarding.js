@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {View, ScrollView, StyleSheet, Dimensions, Text, Button} from 'react-native';
-
+import {View, ScrollView, StyleSheet, Dimensions, Text, Button, ImageBackground} from 'react-native';
+import {welcome, welcome2} from './assets/images';
 const OnBoarding = () => {
   
   const [log,setlog] = useState(0);
@@ -30,9 +30,9 @@ const OnBoarding = () => {
   }
   const ListBoarding =
   [
-    {id:1,name:"it Works"},
-    {id:2,name:"Nicely :D"},
-    {id:3,name:"Done ;)"}]
+    {id:1,name:"it Works",img:welcome},
+    {id:2,name:"Nicely :D",img:welcome2},
+    {id:3,name:"Done ;)",img:welcome}]
   return(
     <View
     style={styles.container}
@@ -48,14 +48,16 @@ const OnBoarding = () => {
     > 
    {ListBoarding.map(obj=>{
      return(
-     <View 
+     <ImageBackground
+     source={obj.img}
      key={obj.id}
      style={styles.box}>
+       
        <Text>Page number {pageNumber}</Text>
       <Text>{obj.name}</Text>
       
     <Button title={'Next'} onPress={()=>goNext()} />
-     </View>
+     </ImageBackground>
      )
    })}
     </ScrollView>
